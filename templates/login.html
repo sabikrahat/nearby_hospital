@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #f5f7fa;
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      padding: 16px;
+    }
+
+    .login-container {
+      background: #fff;
+      padding: 32px 24px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 360px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 24px;
+      color: #333;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #555;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    input[type="submit"] {
+      width: 100%;
+      background: #007bff;
+      color: #fff;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+      background: #0056b3;
+    }
+
+    .footer-text {
+      margin-top: 18px;
+      text-align: center;
+      font-size: 13px;
+      color: #666;
+    }
+
+    .footer-text a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .footer-text a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Login</h2>
+    <form action="{% url 'login' %}" method="POST">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" required />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" required />
+      </div>
+      <input type="submit" value="Login" />
+    </form>
+    <p class="footer-text">Don't have an account? <a href="{% url 'register' %}">Sign up</a></p>
+  </div>
+
+  <!-- Toastify JS -->
+  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script>
+    {% if messages %}
+      {% for message in messages %}
+        Toastify({
+          text: "{{ message|escapejs }}",
+          duration: 4000,
+          gravity: "bottom",
+          position: "center",
+          backgroundColor:
+            "{% if message.tags == 'error' %}#f44336{% elif message.tags == 'success' %}#4CAF50{% else %}#333{% endif %}",
+          close: true
+        }).showToast();
+      {% endfor %}
+    {% endif %}
+  </script>
+</body>
+</html>
