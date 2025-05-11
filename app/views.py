@@ -111,3 +111,9 @@ def terms_and_conditions(request):
 
 def privacy_policy(request):
     return render(request, 'privacy_policy.html')
+
+def admin_site(request):
+    return render(request, 'admin_site.html')
+
+
+

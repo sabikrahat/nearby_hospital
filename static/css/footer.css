@@ -139,10 +139,10 @@
 
 .dk-footer-box-info {
   position: absolute;
-  top: -75px;
   background: #202020;
   padding: 40px;
   z-index: 0;
+  top: 0;
 }
 
 .dk-footer-box-info .footer-social-link h3 {

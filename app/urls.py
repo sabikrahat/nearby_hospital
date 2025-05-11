@@ -9,4 +9,5 @@ urlpatterns = [
     path('privacy-policy', views.privacy_policy, name="privacy-policy"),
     path('terms-and-conditions', views.terms_and_conditions, name="terms-and-conditions"),
     path('contact', views.contact, name="contact"),
+    path('admin_site', views.admin_site, name="admin_site"),
 ]

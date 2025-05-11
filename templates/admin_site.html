@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block title %}Privacy Policy{% endblock %}
+{% block content %}
+{% load static %}
+
+<br />
+<br />
+
+<style>
+    .card {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 30px;
+        height: 200px;
+        margin-bottom: 100px;
+
+    }
+
+    .card.c1 {
+        background-color: rgb(173, 196, 255);
+        /* For browsers that do not support gradients */
+        background-image: linear-gradient(to bottom right, rgb(173, 196, 255), rgb(255, 255, 255));
+    }
+
+    .card.c2 {
+        background-color: rgb(167, 255, 214);
+        /* For browsers that do not support gradients */
+        background-image: linear-gradient(to bottom right, rgb(167, 255, 214), rgb(255, 255, 255));
+    }
+
+    .card.c3 {
+        background-color: rgb(255, 167, 167);
+        /* For browsers that do not support gradients */
+        background-image: linear-gradient(to bottom right, rgb(255, 167, 167), rgb(255, 255, 255));
+    }
+
+    .add {
+        color: #fff;
+        font-size: 16px;
+        padding: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        border-radius: 10px;
+        margin: 16px;
+        background-color: rgb(28, 23, 60);
+        border: none;
+
+    }
+
+    @media screen and (min-width:860px) {
+        .modal-content {
+            width: 850px;
+            right: 185px;
+        }
+    }
+
+
+    .hospital-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.hospital-card {
+    background: #f0f4f8;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.hospital-info {
+    margin-bottom: 15px;
+}
+
+.hospital-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.edit-btn {
+    background-color: #4f81e4;
+    color: white;
+}
+
+.delete-btn {
+    background-color: #e74c3c;
+    color: white;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+.icon-pencil, .icon-trash {
+    margin-right: 8px;
+}
+
+
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card c1">
+                <i style="font-size: 40px; color:rgb(4, 4, 83)" class="fa-solid fa-hospital"></i>
+                <button type="button" class="add" data-bs-toggle="modal" data-bs-target="#hospitalModal"><i
+                        class="fa-solid fa-plus"></i><span>Add Hospital</span></button>
+                <!-- Button trigger modal -->
+
+
+                <!-- Modal hospital -->
+                <div class="modal fade" id="hospitalModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <div class="">
+                                    <h4 class="mb-0">Add Hospital</h4>
+                                </div>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="card-body">
+                                    <form>
+                                        <!-- Hospital Name -->
+                                        <div class="mb-3">
+                                            <label for="hospitalName" class="form-label">Hospital Name</label>
+                                            <input type="text" class="form-control" id="hospitalName"
+                                                placeholder="Enter hospital name" required>
+                                        </div>
+
+                                        <!-- Location -->
+                                        <div class="mb-3">
+                                            <label for="location" class="form-label">Location</label>
+                                            <input type="text" class="form-control" id="location"
+                                                placeholder="123 Main Street, City" required>
+                                        </div>
+
+                                        <!-- Latitude & Longitude -->
+                                        <div class="row">
+                                            <div class="col-md-6 mb-3">
+                                                <label for="latitude" class="form-label">Latitude</label>
+                                                <input type="text" class="form-control" id="latitude"
+                                                    placeholder="40.7128" required>
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                                <label for="longitude" class="form-label">Longitude</label>
+                                                <input type="text" class="form-control" id="longitude"
+                                                    placeholder="-74.0060" required>
+                                            </div>
+                                        </div>
+
+                                        <!-- Contact & Email -->
+                                        <div class="row">
+                                            <div class="col-md-6 mb-3">
+                                                <label for="contact" class="form-label">Contact Number</label>
+                                                <input type="tel" class="form-control" id="contact"
+                                                    placeholder="+1 234 567 890" required>
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                                <label for="email" class="form-label">Email</label>
+                                                <input type="email" class="form-control" id="email"
+                                                    placeholder="hospital@example.com">
+                                            </div>
+                                        </div>
+
+                                        <!-- Services -->
+                                        <div class="mb-3">
+                                            <label for="services" class="form-label">Available Services</label>
+                                            <textarea class="form-control" id="services" rows="3"
+                                                placeholder="Emergency, ICU, Pharmacy..."></textarea>
+                                        </div>
+
+                                        <!-- Departments -->
+                                        <div class="mb-3">
+                                            <label for="departments" class="form-label">Departments</label>
+                                            <textarea class="form-control" id="departments" rows="3"
+                                                placeholder="Cardiology, Neurology..."></textarea>
+                                        </div>
+
+                                        <!-- Submit -->
+                                        <div class="text-end">
+                                            <button type="submit" class="btn btn-primary">Add Hospital</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card c2">
+                <i style="font-size: 40px; color:rgb(4, 4, 83)" class="fa-solid fa-user-doctor"></i>
+                <button type="button" class="add" data-bs-toggle="modal" data-bs-target="#doctorModal"><i
+                        class="fa-solid fa-plus"></i><span>Add Doctor</span></button>
+
+
+
+                <!-- Modal Doctor-->
+                <div class="modal fade" id="doctorModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <div class="">
+                                    <h4 class="mb-0">Add Doctor</h4>
+                                </div>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="card-body">
+                                    <form>
+                                        <!-- Doctor Name -->
+                                        <div class="mb-3">
+                                            <label for="doctorName" class="form-label">Doctor Name</label>
+                                            <input type="text" class="form-control" id="doctorName"
+                                                placeholder="Dr. John Doe" required>
+                                        </div>
+
+                                        <!-- Degrees -->
+                                        <div class="mb-3">
+                                            <label for="degrees" class="form-label">Degrees</label>
+                                            <input type="text" class="form-control" id="degrees"
+                                                placeholder="MBBS, MD, DM..." required>
+                                        </div>
+
+                                        <!-- Hospital Dropdown -->
+                                        <div class="mb-3">
+                                            <label for="hospitalSelect" class="form-label">Hospital</label>
+                                            <select class="form-select" id="hospitalSelect" required>
+                                                <option selected disabled value="">Select Hospital</option>
+                                                <option value="city_hospital">City Hospital</option>
+                                                <option value="sunrise_clinic">Sunrise Clinic</option>
+                                                <option value="metro_medical">Metro Medical Center</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- Department Dropdown -->
+                                        <div class="mb-3">
+                                            <label for="departmentSelect" class="form-label">Department</label>
+                                            <select class="form-select" id="departmentSelect" required>
+                                                <option selected disabled value="">Select Department</option>
+                                                <option value="cardiology">Cardiology</option>
+                                                <option value="orthopedics">Orthopedics</option>
+                                                <option value="neurology">Neurology</option>
+                                                <option value="general_medicine">General Medicine</option>
+                                                <option value="pediatrics">Pediatrics</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- Phone -->
+                                        <div class="mb-3">
+                                            <label for="phone" class="form-label">Phone Number</label>
+                                            <input type="tel" class="form-control" id="phone"
+                                                placeholder="+1 234 567 890" required>
+                                        </div>
+
+                                        <!-- Appointment Schedule -->
+                                        <div class="mb-3">
+                                            <label class="form-label d-block">Available Days</label>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="monday"
+                                                    value="Monday">
+                                                <label class="form-check-label" for="monday">Mon</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="tuesday"
+                                                    value="Tuesday">
+                                                <label class="form-check-label" for="tuesday">Tue</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="wednesday"
+                                                    value="Wednesday">
+                                                <label class="form-check-label" for="wednesday">Wed</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="thursday"
+                                                    value="Thursday">
+                                                <label class="form-check-label" for="thursday">Thu</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="friday"
+                                                    value="Friday">
+                                                <label class="form-check-label" for="friday">Fri</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="saturday"
+                                                    value="Saturday">
+                                                <label class="form-check-label" for="saturday">Sat</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="sunday"
+                                                    value="Sunday">
+                                                <label class="form-check-label" for="sunday">Sun</label>
+                                            </div>
+                                        </div>
+
+                                        <!-- Day & Time -->
+                                        <div class="row">
+                                            <div class="col-md-6 mb-3">
+                                                <label for="appointment" class="form-label">Appointment Schedule</label>
+                                                <input type="text" class="form-control" id="appointment"
+                                                    placeholder="Every 30 minutes" required>
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                                <label for="time" class="form-label">Available Time</label>
+                                                <input type="text" class="form-control" id="time"
+                                                    placeholder="10:00 AM - 2:00 PM" required>
+                                            </div>
+                                        </div>
+
+
+
+                                        <!-- Fees -->
+                                        <div class="mb-3">
+                                            <label for="fees" class="form-label">Consultation Fees</label>
+                                            <input type="number" class="form-control" id="fees" placeholder="500"
+                                                required>
+                                        </div>
+
+                                        <!-- Rating -->
+                                        <div class="mb-3">
+                                            <label for="rating" class="form-label">Rating (1 - 5)</label>
+                                            <input type="number" step="0.1" min="1" max="5" class="form-control"
+                                                id="rating" placeholder="4.5">
+                                        </div>
+
+                                        <!-- Submit -->
+                                        <div class="text-end">
+                                            <button type="submit" class="btn btn-success">Add Doctor</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+               <button type="button" class="btn btn-primary">Save changes</button>
+           </div> -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card c3">
+                <i style="font-size: 40px; color:rgb(4, 4, 83)" class="fa-solid fa-truck-medical"></i>
+                <button type="button" class="add" data-bs-toggle="modal" data-bs-target="#ambulanceModal"><i
+                        class="fa-solid fa-plus"></i><span>Add Ambulance</span></button>
+
+                <!-- Modal Ambulance -->
+                <div class="modal fade" id="ambulanceModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <div class="">
+                                    <h4 class="mb-0">Add Ambulance</h4>
+                                </div>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="card-body">
+                                    <form>
+                                        <!-- Hospital Name -->
+                                        <div class="mb-3">
+                                            <label for="hospitalSelect" class="form-label">Hospital</label>
+                                            <select class="form-select" id="hospitalSelect" required>
+                                                <option selected disabled value="">Select Hospital</option>
+                                                <option value="city_hospital">City Hospital</option>
+                                                <option value="sunrise_clinic">Sunrise Clinic</option>
+                                                <option value="metro_medical">Metro Medical Center</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- Location -->
+                                        <div class="mb-3">
+                                            <label for="location" class="form-label">Location</label>
+                                            <input type="text" class="form-control" id="location" readonly required>
+                                        </div>
+
+
+                                        <!-- Services -->
+                                        <div class="mb-3">
+                                            <label for="services" class="form-label">Available Services</label>
+                                            <textarea class="form-control" id="services" rows="3"
+                                                placeholder="Emergency, ICU, Pharmacy..."></textarea>
+                                        </div>
+
+
+                                        <!-- Phone Number -->
+                                        <div class="mb-3">
+                                            <label for="ambulancePhone" class="form-label">Phone Number</label>
+                                            <input type="tel" class="form-control" id="ambulancePhone"
+                                                placeholder="+1 123 456 7890" required>
+                                        </div>
+
+                                        <!-- Fees -->
+                                        <div class="mb-3">
+                                            <label for="ambulanceFees" class="form-label">Fees</label>
+                                            <input type="number" class="form-control" id="ambulanceFees"
+                                                placeholder="300" required>
+                                        </div>
+
+                                        <!-- Submit -->
+                                        <div class="text-end">
+                                            <button type="submit" class="btn btn-primary">Add Ambulance</button>
+                                        </div>
+                                    </form>
+                                </div>
+
+
+                            </div>
+                            <!-- <div class="modal-footer">
+                                               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                               <button type="button" class="btn btn-primary">Save changes</button>
+                                           </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class=" col-md-12">
+            <div class="hospital-list">
+                <div class="hospital-card">
+                    <div class="hospital-info">
+                        <h3>St. Mary's Hospital</h3>
+                        <p>Location: Downtown City</p>
+                        <p>Contact: (123) 456-7890</p>
+                    </div>
+                    <div class="hospital-actions">
+                        <button class="edit-btn"><i class="icon-pencil"></i> Edit</button>
+                        <button class="delete-btn"><i class="icon-trash"></i> Delete</button>
+                    </div>
+                </div>
+            
+                <div class="hospital-card">
+                    <div class="hospital-info">
+                        <h3>City Medical Center</h3>
+                        <p>Location: Central Park</p>
+                        <p>Contact: (987) 654-3210</p>
+                    </div>
+                    <div class="hospital-actions">
+                        <button class="edit-btn"><i class="icon-pencil"></i> Edit</button>
+                        <button class="delete-btn"><i class="icon-trash"></i> Delete</button>
+                    </div>
+                </div>
+            
+                <!-- Repeat for each hospital -->
+            </div>
+            
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
