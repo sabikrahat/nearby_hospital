@@ -232,27 +232,18 @@
                   ><b>Home</b></a
                 >
               </li>
-              {% comment %} {% if request.session.email %}
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'logout' %}"><b>Log Out</b></a>
-              </li>
-              {% else %}
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'authenticate' %}"
-                  ><b>Authenticate</b></a
-                >
-              </li>
-              {% endif %} {% endcomment %}
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'contact' %}"
                   ><b>Contact</b></a
                 >
               </li>
+              {% if user.isAdmin %}
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'admin_site' %}"
-                  ><b>Admin</b></a
+                <a class="nav-link" href="{% url 'admin_panel' %}"
+                  ><b>Admin Panel</b></a
                 >
               </li>
+              {% endif %}
             </ul>
             {% if request.session.email %}
             <b>
