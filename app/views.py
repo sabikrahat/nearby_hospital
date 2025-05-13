@@ -85,7 +85,7 @@ def logout(request):
 
 
 def contact(request):
-    # try:
+    try:
         user = UserModel.objects.get(email=request.session['email'])
 
         if request.method == 'POST':
@@ -102,9 +102,9 @@ def contact(request):
                 return redirect('/')
         else:
             return render(request, 'contact.html', {'user': user})
-    # except:
-    #     messages.error(request, 'You need to login first')
-    #     return redirect('login')
+    except:
+        messages.error(request, 'You need to login first')
+        return redirect('login')
 
 def terms_and_conditions(request):
     return render(request, 'terms_and_conditions.html')

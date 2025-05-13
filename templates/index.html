@@ -1,452 +1,428 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
-  <!--Css file-->
-  <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}"> -->
+<!--Css file-->
+<!-- <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}"> -->
 
-  {% comment %}
-  <link
-    href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
-    rel="stylesheet"
-    id="bootstrap-css"
-  />
-  {% endcomment %}
 
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-    crossorigin="anonymous"
-  />
 
-  <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    rel="stylesheet"
-  />
 
-  <style>
-    .container-fluid {
-      animation: movedown 1s linear 1;
-      animation-delay: 0.1s;
-      visibility: hidden;
-      animation-fill-mode: forwards;
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="A website which will help to find out nearby hospital." />
+  <meta name="author" content="Students of EWU" />
+  <meta name="generator" content="Coding Table" />
+
+  <link rel="stylesheet" type="text/css" id="mydefaultstylesheet" href="{% static 'css/default.css' %}" />
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="{% static 'favicon.ico' %}" />
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <!-- Title -->
+  <title>{% block title %}Nearby Hospital{% endblock %}</title>
+</head>
+
+
+<style>
+  .container-fluid {
+    animation: movedown 1s linear 1;
+    animation-delay: 0.1s;
+    visibility: hidden;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes movedown {
+    0% {
+      transform: translateY(-100px);
+      visibility: visible;
     }
 
-    @keyframes movedown {
-      0% {
-        transform: translateY(-100px);
-        visibility: visible;
-      }
+    100% {
+      transform: translateY(0);
+      visibility: visible;
+    }
+  }
 
-      100% {
-        transform: translateY(0);
-        visibility: visible;
-      }
+  .custom-center {
+    animation: moveright 1s linear;
+    animation-delay: 0.5s;
+    visibility: hidden;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes moveright {
+    0% {
+      transform: translateX(-100px);
+      visibility: visible;
     }
 
-    .custom-center {
-      animation: moveright 1s linear;
-      animation-delay: 0.5s;
-      visibility: hidden;
-      animation-fill-mode: forwards;
+    100% {
+      transform: translateX(0);
+      visibility: visible;
+    }
+  }
+
+  .col-md-5 .row-2 {
+    animation: moveright 1.5s linear 1;
+    animation-delay: 0.5s;
+    visibility: hidden;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes moveright {
+    0% {
+      transform: translateX(-100px);
+      visibility: visible;
     }
 
-    @keyframes moveright {
-      0% {
-        transform: translateX(-100px);
-        visibility: visible;
-      }
+    100% {
+      transform: translateX(0);
+      visibility: visible;
+    }
+  }
 
-      100% {
-        transform: translateX(0);
-        visibility: visible;
-      }
+  .col-md-5 .row-3 {
+    animation: moveright 1.5s linear 1;
+    animation-delay: 0.5s;
+    visibility: hidden;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes moveright {
+    0% {
+      transform: translateX(-100px);
+      visibility: visible;
     }
 
-    .col-md-5 .row-2 {
-      animation: moveright 1.5s linear 1;
-      animation-delay: 0.5s;
-      visibility: hidden;
-      animation-fill-mode: forwards;
+    100% {
+      transform: translateX(0);
+      visibility: visible;
+    }
+  }
+
+  .col-md-5 .row-5 {
+    animation: moveright 1.5s linear 1;
+    animation-delay: 0.5s;
+    visibility: hidden;
+    animation-fill-mode: forwards;
+  }
+
+  .option {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 120px;
+    padding-right: 120px;
+  }
+
+  @keyframes moveright {
+    0% {
+      transform: translateX(-100px);
+      visibility: visible;
     }
 
-    @keyframes moveright {
-      0% {
-        transform: translateX(-100px);
-        visibility: visible;
-      }
+    100% {
+      transform: translateX(0);
+      visibility: visible;
+    }
+  }
 
-      100% {
-        transform: translateX(0);
-        visibility: visible;
-      }
+  /* ------------for image----------- */
+
+  .col-md-7 .responsive {
+    animation: zoomin 1s linear 1;
+    animation-delay: 0.6s;
+    visibility: hidden;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes zoomin {
+    0% {
+      transform: scale(0.5);
+      visibility: visible;
     }
 
-    .col-md-5 .row-3 {
-      animation: moveright 1.5s linear 1;
-      animation-delay: 0.5s;
-      visibility: hidden;
-      animation-fill-mode: forwards;
+    100% {
+      transform: scale(1);
+      visibility: visible;
     }
+  }
+</style>
 
-    @keyframes moveright {
-      0% {
-        transform: translateX(-100px);
-        visibility: visible;
-      }
 
-      100% {
-        transform: translateX(0);
-        visibility: visible;
-      }
-    }
+<style>
+  .hero-section {
+    background: linear-gradient(rgba(0, 123, 255, 0.7), rgba(0, 123, 255, 0.7)), url('/api/placeholder/1200/400');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 100px 0;
+  }
 
-    .col-md-5 .row-5 {
-      animation: moveright 1.5s linear 1;
-      animation-delay: 0.5s;
-      visibility: hidden;
-      animation-fill-mode: forwards;
-    }
+  .feature-card {
+    transition: transform 0.3s;
+    margin-bottom: 20px;
+    height: 100%;
+  }
 
-    .option {
-      padding-top: 5px;
-      padding-bottom: 5px;
-      padding-left: 120px;
-      padding-right: 120px;
-    }
+  .feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
 
-    @keyframes moveright {
-      0% {
-        transform: translateX(-100px);
-        visibility: visible;
-      }
+  .emergency-section {
+    background-color: #ff4b4b;
+    color: white;
+    padding: 40px 0;
+  }
 
-      100% {
-        transform: translateX(0);
-        visibility: visible;
-      }
-    }
+  .nearby-hospital {
+    border-left: 3px solid #0d6efd;
+    padding: 15px;
+    margin-bottom: 20px;
+  }
 
-    /* ------------for image----------- */
+  .footer {
+    background-color: #343a40;
+    color: white;
+    padding: 40px 0;
+  }
 
-    .col-md-7 .responsive {
-      animation: zoomin 1s linear 1;
-      animation-delay: 0.6s;
-      visibility: hidden;
-      animation-fill-mode: forwards;
-    }
+  .doctor-card img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
 
-    @keyframes zoomin {
-      0% {
-        transform: scale(0.5);
-        visibility: visible;
-      }
+  .bacl_img {
 
-      100% {
-        transform: scale(1);
-        visibility: visible;
-      }
-    }
-  </style>
+    height: 50%;
+    width: 100%;
+    /* background-image: url('../static/images/ambulance.jpeg'); */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    max-width: 100%;
+    width: 100vw;
+    height: 50vh;
+    min-height: 550px;
+  }
+</style>
 
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="A website which will help to find out nearby hospital."
-    />
-    <meta name="author" content="Students of EWU" />
-    <meta name="generator" content="Coding Table" />
 
-    <link
-      rel="stylesheet"
-      type="text/css"
-      id="mydefaultstylesheet"
-      href="{% static 'css/default.css' %}"
-    />
-
-    <!-- Bootstrap CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-      crossorigin="anonymous"
-    />
-
-    <link
-      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-      rel="stylesheet"
-    />
-
-    <!-- Favicon -->
-    <link rel="icon" href="{% static 'favicon.ico' %}" />
-
-    <!-- Font Awesome -->
-    <script
-      src="https://kit.fontawesome.com/a076d05399.js"
-      crossorigin="anonymous"
-    ></script>
-
-    <!-- Title -->
-    <title>{% block title %}Nearby Hospital{% endblock %}</title>
-  </head>
-
-  <body>
-    <!-- Navbar -->
-    <div
-      class="sticky-lg-top"
-      style="box-shadow: 5px 5px 5px rgb(167, 165, 165)"
-    >
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div
-          class="container-fluid"
-          style="margin-left: 2em; margin-right: 2em"
-        >
-          <a class="navbar-brand" href="{% url 'home' %}">
-            <img
-              src="{% static 'images/logo.jpg' %}"
-              height="35px"
-              width="45px"
-              class="d-inline-block align-top"
-              alt="Nearby Hospital image"
-            />
-            <b>&ensp;Nearby Hospital</b>
-          </a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="{% url 'home' %}"
-                  ><b>Home</b></a
-                >
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'contact' %}"
-                  ><b>Contact</b></a
-                >
-              </li>
-              {% if user.isAdmin %}
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'admin_panel' %}"
-                  ><b>Admin Panel</b></a
-                >
-              </li>
-              {% endif %}
-            </ul>
-            {% if request.session.email %}
-            <b>
-              <p
-                id="nameshow"
-                style="
+<body>
+  <!-- Navbar -->
+  <div class="sticky-lg-top" style="box-shadow: 5px 5px 5px rgb(167, 165, 165)">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid" style="margin-left: 2em; margin-right: 2em">
+        <a class="navbar-brand" href="{% url 'home' %}">
+          <img src="{% static 'images/logo.jpg' %}" height="35px" width="45px" class="d-inline-block align-top"
+            alt="Nearby Hospital image" />
+          <b>&ensp;Nearby Hospital</b>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="{% url 'home' %}"><b>Home</b></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'contact' %}"><b>Contact</b></a>
+            </li>
+            {% if user.isAdmin %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'admin_panel' %}"><b>Admin Panel</b></a>
+            </li>
+            {% endif %}
+          </ul>
+          {% if request.session.email %}
+          <b>
+            <p id="nameshow" style="
                   color: rgb(13, 184, 13);
                   text-align: center;
                   margin: 0.3em;
                   padding-right: 1em;
-                "
-              ></p>
-            </b>
-            &emsp; {% endif %}
-            <script type="text/javascript">
-              var email =
-                "{% if request.session.email %}{{ request.session.email }}{% endif %}";
-              const username = " | Hello, " + email.split("@")[0] + " | ";
-              document.getElementById("nameshow").innerHTML = username;
-            </script>
-            <div>
-              <!-- css file  -->
-              <link
-                rel="stylesheet"
-                type="text/css"
-                href="{% static 'css/user_dropdown.css'%}"
-              />
-              <div class="action">
-                <div class="profile" onclick="menuToggle();">
-                  {% if user.profileImg %}
-                  <img
-                    src="../../{{user.profileImg.url}}"
-                    alt="{{user.name}}"
-                    style="
+                "></p>
+          </b>
+          &emsp; {% endif %}
+          <script type="text/javascript">
+            var email =
+              "{% if request.session.email %}{{ request.session.email }}{% endif %}";
+            const username = " | Hello, " + email.split("@")[0] + " | ";
+            document.getElementById("nameshow").innerHTML = username;
+          </script>
+          <div>
+            <!-- css file  -->
+            <link rel="stylesheet" type="text/css" href="{% static 'css/user_dropdown.css'%}" />
+            <div class="action">
+              <div class="profile" onclick="menuToggle();">
+                {% if user.profileImg %}
+                <img src="../../{{user.profileImg.url}}" alt="{{user.name}}" style="
                       border: 3px solid #0b5ed7;
                       object-fit: cover;
                       padding: 0.05em;
                       border-radius: 50%;
                       align-items: center;
-                    "
-                  />
-                  {% else %}
-                  <img
-                    src="{% static 'images/default_dp.gif' %}"
-                    alt="{{user.name}}"
-                    style="
+                    " />
+                {% else %}
+                <img src="{% static 'images/default_dp.gif' %}" alt="{{user.name}}" style="
                       border: 3px solid #0b5ed7;
                       object-fit: cover;
                       padding: 0.05em;
                       border-radius: 50%;
                       align-items: center;
-                    "
-                  />
-                  {% endif %}
-                </div>
-                <div class="menu">
-                  {% if request.session.email %}
-                  <h3>
-                    User Account
-                    <div>{{user.name}}</div>
-                  </h3>
+                    " />
+                {% endif %}
+              </div>
+              <div class="menu">
+                {% if request.session.email %}
+                <h3>
+                  User Account
+                  <div>{{user.name}}</div>
+                </h3>
+                {% else %}
+                <h3>
+                  User Account
+                  <div>Lost and Found</div>
+                </h3>
+                {% endif %}
+                <ul>
+                  {% if request.session.email %} {% comment %}
+                  <li>
+                    <span class="material-icons icons-size-bg">insert_comment</span>
+                    <a href="{% url 'write-post' %}">Write Post</a>
+                  </li>
+                  <li>
+                    <span class="material-icons icons-size-bg">engineering</span>
+                    <a href="{% url 'admin-login' %}">Admin Panel</a>
+                  </li>
+                  <li>
+                    <span class="material-icons icons-size-bg">request_quote</span>
+                    <a href="{% url 'point-purchase' %}">Point Purchase</a>
+                  </li>
+                  {% endcomment %}
+                  <li>
+                    <span class="material-icons icons-size-bg">phone</span>
+                    <a href="{% url 'contact' %}">Contact</a>
+                  </li>
+                  {% comment %}
+                  <li>
+                    <span class="material-icons icons-size-bg">person</span>
+                    <a href="{% url 'view-profile' %}">My Profile</a>
+                  </li>
+                  <li>
+                    <span class="material-icons icons-size-bg">mode</span>
+                    <a href="{% url 'edit-profile' %}">Edit Account</a>
+                  </li>
+                  <li>
+                    <span class="material-icons icons-size-bg">lock_open</span>
+                    <a href="{% url 'forget-password' %}">Reset Password</a>
+                  </li>
+                  {% endcomment %}
+                  <li>
+                    <span class="material-icons icons-size-bg">logout</span>
+                    <a href="{% url 'logout' %}">Logout</a>
+                  </li>
                   {% else %}
-                  <h3>
-                    User Account
-                    <div>Lost and Found</div>
-                  </h3>
+                  <li>
+                    <span class="material-icons icons-size-bg">phone</span>
+                    <a href="{% url 'contact' %}">Contact</a>
+                  </li>
                   {% endif %}
-                  <ul>
-                    {% if request.session.email %} {% comment %}
-                    <li>
-                      <span class="material-icons icons-size-bg"
-                        >insert_comment</span
-                      >
-                      <a href="{% url 'write-post' %}">Write Post</a>
-                    </li>
-                    <li>
-                      <span class="material-icons icons-size-bg"
-                        >engineering</span
-                      >
-                      <a href="{% url 'admin-login' %}">Admin Panel</a>
-                    </li>
-                    <li>
-                      <span class="material-icons icons-size-bg"
-                        >request_quote</span
-                      >
-                      <a href="{% url 'point-purchase' %}">Point Purchase</a>
-                    </li>
-                    {% endcomment %}
-                    <li>
-                      <span class="material-icons icons-size-bg">phone</span>
-                      <a href="{% url 'contact' %}">Contact</a>
-                    </li>
-                    {% comment %}
-                    <li>
-                      <span class="material-icons icons-size-bg">person</span>
-                      <a href="{% url 'view-profile' %}">My Profile</a>
-                    </li>
-                    <li>
-                      <span class="material-icons icons-size-bg">mode</span>
-                      <a href="{% url 'edit-profile' %}">Edit Account</a>
-                    </li>
-                    <li>
-                      <span class="material-icons icons-size-bg"
-                        >lock_open</span
-                      >
-                      <a href="{% url 'forget-password' %}">Reset Password</a>
-                    </li>
-                    {% endcomment %}
-                    <li>
-                      <span class="material-icons icons-size-bg">logout</span>
-                      <a href="{% url 'logout' %}">Logout</a>
-                    </li>
-                    {% else %}
-                    <li>
-                      <span class="material-icons icons-size-bg">phone</span>
-                      <a href="{% url 'contact' %}">Contact</a>
-                    </li>
-                    {% endif %}
-                  </ul>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <script>
+            function menuToggle() {
+              const toggleMenu = document.querySelector(".menu");
+              toggleMenu.classList.toggle("active");
+            }
+          </script>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Main Part -->
+  <div class="">
+    <div class="">
+      <div class="">
+        {% block content %}
+        <section class="hero-section text-center">
+          <div style="position: relative; height: 50%; width: 100%">
+            <div class="back_img">
+              <div class="container">
+                <h1 class="display-4 fw-bold mb-4">Your Health, Our Priority</h1>
+                <p class="lead mb-5">Find the right hospital, book appointments with qualified doctors, and access
+                  emergency services
+                  - all in one place.</p>
+                <div class="row justify-content-center">
+                  <div class="col-md-8">
+                    <div class="input-group mb-3">
+                      <input type="text" class="form-control form-control-lg"
+                        placeholder="Search for hospitals or doctors...">
+                      <button class="btn btn-light" type="button">
+                        <i class="fas fa-search"></i> Search
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-            <script>
-              function menuToggle() {
-                const toggleMenu = document.querySelector(".menu");
-                toggleMenu.classList.toggle("active");
-              }
-            </script>
-          </div>
-        </div>
-      </nav>
-    </div>
 
-    <!-- Main Part -->
-    <div class="">
-      <div class="">
-        <div class="">
-          {% block content %}
-
-          <div style="position: relative; height: 50%; width: 100%">
-            <div
-              style="
-                height: 50%;
-                width: 100%;
-                background-image: url('../static/images/ambulance.jpeg');
-                background-position: center;
-                background-repeat: no-repeat;
-                background-size: cover;
-                max-width: 100%;
-                width: 100vw;
-                height: 50vh;
-                min-height: 550px;
-              "
-            ></div>
-
-            <div
-              class="box"
-              style="
+            <div class="box" style="
                 margin-bottom: 50px;
                 position: absolute;
                 box-shadow: 0 10px 10px -3px gray;
                 background: white;
-                height: 28%;
+                height: 65%;
                 width: 40%;
                 z-index: 999;
-                top: 85%;
+                top: 110%;
                 left: 30%;
+                color: #000;
                 border-radius: 12px;
                 padding: 25px;
-              "
-            >
+              ">
               <div class="row">
-                <div
-                  class="col-7"
-                  style="
+                <div class="col-7" style="
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                  "
-                >
+                  ">
                   <div>
                     <h3 style="font-weight: 700">
                       24/7 Emergency Medical <br />
                       Service At Your Doorstep
                     </h3>
 
-                    <span
-                      >Quick respons. Life-saving care. Always available
+                    <span>Quick respons. Life-saving care. Always available
                     </span>
                   </div>
                 </div>
                 <div class="col-5" style="display: flex; align-items: center">
                   <div style="flex: 1">
-                    <button
-                      style="
+                    <button style="
                         background: rgb(226, 78, 51);
                         color: #fff;
                         padding: 16px;
                         width: 98%;
                         border: none;
                         border-radius: 6px;
-                      "
-                    >
+                      ">
                       Call Now
                     </button>
                   </div>
@@ -454,133 +430,456 @@
               </div>
             </div>
           </div>
+        </section>
 
-          <div class="container" style="margin-top: 150px">
-            <div>
-              <div
-                style="
+
+        <!-- Main Features Section -->
+        <section class="my-5 pt-4">
+          <div class="container mt-5">
+            <h2 class="text-center my-5">Our Services</h2>
+            <div class="row">
+              <!-- Feature 1 -->
+              <div class="col-md-3">
+                <div class="card feature-card shadow-sm h-100">
+                  <div class="card-body text-center">
+                    <div class="mb-4">
+                      <i class="fas fa-hospital text-warning fa-3x"></i>
+                    </div>
+                    <h5 class="card-title">Find Hospitals</h5>
+                    <p class="card-text">Search and discover top-rated hospitals near your location.</p>
+                    <a href="#" class="btn btn-outline-primary mt-3">Find Now</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Feature 2 -->
+              <div class="col-md-3">
+                <div class="card feature-card shadow-sm h-100">
+                  <div class="card-body text-center">
+                    <div class="mb-4">
+                      <i class="fas fa-user-md text-success fa-3x"></i>
+                    </div>
+                    <h5 class="card-title">Doctor Appointments</h5>
+                    <p class="card-text">Book appointments with specialists of your choice.</p>
+                    <a href="#" class="btn btn-outline-primary mt-3">Book Now</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Feature 3 -->
+              <div class="col-md-3">
+                <div class="card feature-card shadow-sm h-100">
+                  <div class="card-body text-center">
+                    <div class="mb-4">
+                      <i class="fas fa-ambulance text-danger fa-3x"></i>
+                    </div>
+                    <h5 class="card-title">Emergency Services</h5>
+                    <p class="card-text">Quick access to emergency ambulance services.</p>
+                    <a href="#" class="btn btn-outline-danger mt-3">Call Now</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Feature 4 -->
+              <div class="col-md-3">
+                <div class="card feature-card shadow-sm h-100">
+                  <div class="card-body text-center">
+                    <div class="mb-4">
+                      <i class="fas fa-map-marker-alt text-primary fa-3x"></i>
+                    </div>
+                    <h5 class="card-title">Nearby Facilities</h5>
+                    <p class="card-text">Find healthcare facilities closest to your location.</p>
+                    <a href="#" class="btn btn-outline-primary mt-3">Check Map</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Emergency Section -->
+        <section class="emergency-section">
+          <div class="container text-center">
+            <h3><i class="fas fa-exclamation-triangle me-2"></i> Emergency? Need an ambulance?</h3>
+            <p class="lead mb-4">Our emergency service is available 24/7. Call now for immediate assistance.</p>
+            <a href="#" class="btn btn-light btn-lg">
+              <i class="fas fa-phone-alt me-2"></i> 911 - Emergency Hotline
+            </a>
+          </div>
+        </section>
+
+        <!-- Nearby Hospitals Section -->
+        <section class="py-5 bg-light">
+          <div class="container">
+            <h2 class="text-center mb-5">Nearby Hospitals</h2>
+            <div class="row">
+              <!-- Hospital 1 -->
+              <div class="col-md-6 mb-4">
+                <div class="card shadow-sm">
+                  <div class="row g-0">
+
+                    <div class="col-md-12">
+                      <div class="card-body">
+                        <h5 class="card-title">City General Hospital</h5>
+                        <div class="mb-2">
+                          <span class="badge bg-success">Open 24/7</span>
+                          <span class="ms-2">⭐⭐⭐⭐ (4.2)</span>
+                        </div>
+                        <p class="card-text">
+                          <i class="fas fa-map-marker-alt text-danger"></i> 123 Main Street, City Center
+                        </p>
+                        <p class="card-text">
+                          <i class="fas fa-walking text-primary"></i> 2.5 km away
+                        </p>
+                        <div class="d-flex justify-content-between">
+                          <a href="#" class="btn btn-outline-primary btn-sm">View Details</a>
+                          <a href="#" class="btn btn-primary btn-sm">Book Appointment</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Hospital 2 -->
+              <div class="col-md-6 mb-4">
+                <div class="card shadow-sm">
+                  <div class="row g-0">
+
+                    <div class="col-md-12">
+                      <div class="card-body">
+                        <h5 class="card-title">Memorial Medical Center</h5>
+                        <div class="mb-2">
+                          <span class="badge bg-success">Open 24/7</span>
+                          <span class="ms-2">⭐⭐⭐⭐⭐ (4.8)</span>
+                        </div>
+                        <p class="card-text">
+                          <i class="fas fa-map-marker-alt text-danger"></i> 456 Park Avenue, Westside
+                        </p>
+                        <p class="card-text">
+                          <i class="fas fa-walking text-primary"></i> 3.8 km away
+                        </p>
+                        <div class="d-flex justify-content-between">
+                          <a href="#" class="btn btn-outline-primary btn-sm">View Details</a>
+                          <a href="#" class="btn btn-primary btn-sm">Book Appointment</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Hospital 3 -->
+              <div class="col-md-6 mb-4">
+                <div class="card shadow-sm">
+                  <div class="row g-0">
+
+                    <div class="col-md-12">
+                      <div class="card-body">
+                        <h5 class="card-title">Children's Medical Center</h5>
+                        <div class="mb-2">
+                          <span class="badge bg-success">Open 24/7</span>
+                          <span class="ms-2">⭐⭐⭐⭐⭐ (4.9)</span>
+                        </div>
+                        <p class="card-text">
+                          <i class="fas fa-map-marker-alt text-danger"></i> 789 Children's Way, Eastside
+                        </p>
+                        <p class="card-text">
+                          <i class="fas fa-walking text-primary"></i> 5.1 km away
+                        </p>
+                        <div class="d-flex justify-content-between">
+                          <a href="#" class="btn btn-outline-primary btn-sm">View Details</a>
+                          <a href="#" class="btn btn-primary btn-sm">Book Appointment</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Hospital 4 -->
+              <div class="col-md-6 mb-4">
+                <div class="card shadow-sm">
+                  <div class="row g-0">
+
+                    <div class="col-md-12">
+                      <div class="card-body">
+                        <h5 class="card-title">University Health System</h5>
+                        <div class="mb-2">
+                          <span class="badge bg-success">Open 24/7</span>
+                          <span class="ms-2">⭐⭐⭐⭐ (4.6)</span>
+                        </div>
+                        <p class="card-text">
+                          <i class="fas fa-map-marker-alt text-danger"></i> 101 University Blvd, Downtown
+                        </p>
+                        <p class="card-text">
+                          <i class="fas fa-walking text-primary"></i> 4.3 km away
+                        </p>
+                        <div class="d-flex justify-content-between">
+                          <a href="#" class="btn btn-outline-primary btn-sm">View Details</a>
+                          <a href="#" class="btn btn-primary btn-sm">Book Appointment</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center mt-4">
+              <a href="#" class="btn btn-primary">View All Hospitals</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Featured Doctors Section -->
+        <section class="py-5">
+          <div class="container">
+            <h2 class="text-center mb-5">Top Doctors</h2>
+            <div class="row">
+              <!-- Doctor 1 -->
+              <div class="col-md-3 mb-4">
+                <div class="card text-center shadow-sm">
+                  <div class="card-body">
+                    <img src="/api/placeholder/100/100" class="mb-3" alt="Dr. Sarah Johnson">
+                    <h5 class="card-title">Dr. Sarah Johnson</h5>
+                    <p class="card-text text-muted">Cardiologist</p>
+                    <div class="mb-2">
+                      <small class="text-warning">⭐⭐⭐⭐⭐ (4.9)</small>
+                    </div>
+                    <p class="card-text">
+                      <small>City General Hospital</small>
+                    </p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">View Profile</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Doctor 2 -->
+              <div class="col-md-3 mb-4">
+                <div class="card text-center shadow-sm">
+                  <div class="card-body">
+                    <img src="/api/placeholder/100/100" class="mb-3" alt="Dr. Michael Chen">
+                    <h5 class="card-title">Dr. Michael Chen</h5>
+                    <p class="card-text text-muted">Neurologist</p>
+                    <div class="mb-2">
+                      <small class="text-warning">⭐⭐⭐⭐⭐ (4.8)</small>
+                    </div>
+                    <p class="card-text">
+                      <small>Memorial Medical Center</small>
+                    </p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">View Profile</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Doctor 3 -->
+              <div class="col-md-3 mb-4">
+                <div class="card text-center shadow-sm">
+                  <div class="card-body">
+                    <img src="/api/placeholder/100/100" class="mb-3" alt="Dr. Emily Rodriguez">
+                    <h5 class="card-title">Dr. Emily Rodriguez</h5>
+                    <p class="card-text text-muted">Pediatrician</p>
+                    <div class="mb-2">
+                      <small class="text-warning">⭐⭐⭐⭐⭐ (4.9)</small>
+                    </div>
+                    <p class="card-text">
+                      <small>Children's Medical Center</small>
+                    </p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">View Profile</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Doctor 4 -->
+              <div class="col-md-3 mb-4">
+                <div class="card text-center shadow-sm">
+                  <div class="card-body">
+                    <img src="/api/placeholder/100/100" class="mb-3" alt="Dr. James Wilson">
+                    <h5 class="card-title">Dr. James Wilson</h5>
+                    <p class="card-text text-muted">Orthopedic Surgeon</p>
+                    <div class="mb-2">
+                      <small class="text-warning">⭐⭐⭐⭐ (4.7)</small>
+                    </div>
+                    <p class="card-text">
+                      <small>University Health System</small>
+                    </p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">View Profile</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center mt-4">
+              <a href="#" class="btn btn-primary">View All Doctors</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="py-5 bg-light">
+          <div class="container">
+            <h2 class="text-center mb-5">What Our Users Say</h2>
+            <div class="row">
+              <div class="col-md-4 mb-4">
+                <div class="card shadow-sm h-100">
+                  <div class="card-body">
+                    <div class="mb-3 text-warning">
+                      ⭐⭐⭐⭐⭐
+                    </div>
+                    <p class="card-text">"I found a great specialist for my condition and booked an appointment in
+                      minutes. The
+                      platform is so intuitive and saved me so much time!"</p>
+                    <div class="d-flex align-items-center mt-3">
+                      <img src="/api/placeholder/50/50" class="rounded-circle me-3" alt="User">
+                      <div>
+                        <h6 class="mb-0">Jennifer Adams</h6>
+                        <small class="text-muted">Patient</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4 mb-4">
+                <div class="card shadow-sm h-100">
+                  <div class="card-body">
+                    <div class="mb-3 text-warning">
+                      ⭐⭐⭐⭐⭐
+                    </div>
+                    <p class="card-text">"When my son had an accident, the emergency service feature helped us get an
+                      ambulance
+                      quickly. This platform is literally a lifesaver!"</p>
+                    <div class="d-flex align-items-center mt-3">
+                      <img src="/api/placeholder/50/50" class="rounded-circle me-3" alt="User">
+                      <div>
+                        <h6 class="mb-0">Robert Taylor</h6>
+                        <small class="text-muted">Parent</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4 mb-4">
+                <div class="card shadow-sm h-100">
+                  <div class="card-body">
+                    <div class="mb-3 text-warning">
+                      ⭐⭐⭐⭐
+                    </div>
+                    <p class="card-text">"As someone new to the city, finding nearby hospitals and comparing their
+                      services was
+                      incredibly helpful. I highly recommend this platform."</p>
+                    <div class="d-flex align-items-center mt-3">
+                      <img src="/api/placeholder/50/50" class="rounded-circle me-3" alt="User">
+                      <div>
+                        <h6 class="mb-0">Maria Garcia</h6>
+                        <small class="text-muted">New Resident</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        <div class="container">
+          <!-- <div>
+            <div style="
                   display: flex;
                   align-items: center;
                   justify-content: center;
                   margin-bottom: 30px;
-                "
-              >
-                <h4 style="font-weight: bold; font-size: 24px">Our Services</h4>
-              </div>
-
-              <div class="row" style="text-align: center">
-                <div class="col-3">
-                  <a
-                    style="
-                      display: flex;
-                      justify-content: center;
-                      align-items: center;
-                      flex-direction: column;
-                      color: #12234b;
-                      font-size: 20px;
-                      font-weight: 500;
-                      gap: 10px;
-                    "
-                  >
-                    <i
-                      style="font-size: 30px"
-                      class="fa-solid fa-truck-medical"
-                    ></i>
-                    <span
-                      >Emergency <br />
-                      Ambulance</span
-                    >
-                  </a>
-                </div>
-                <div class="col-3">
-                  <a
-                    style="
-                      display: flex;
-                      justify-content: center;
-                      align-items: center;
-                      flex-direction: column;
-                      color: #12234b;
-                      font-size: 20px;
-                      font-weight: 500;
-                      gap: 10px;
-                    "
-                  >
-                    <i style="font-size: 30px" class="fa-solid fa-heart-pulse">
-                    </i>
-                    <span
-                      >First Responder <br />
-                      Care</span
-                    >
-                  </a>
-                </div>
-                <div class="col-3">
-                  <a
-                    style="
-                      display: flex;
-                      justify-content: center;
-                      align-items: center;
-                      flex-direction: column;
-                      color: #12234b;
-                      font-size: 20px;
-                      font-weight: 500;
-                      gap: 10px;
-                    "
-                  >
-                    <i
-                      style="font-size: 30px"
-                      class="fa-solid fa-bed-pulse"
-                    ></i>
-                    <span
-                      >Critical Patient <br />
-                      Transport
-                    </span>
-                  </a>
-                </div>
-                <div class="col-3">
-                  <a
-                    style="
-                      display: flex;
-                      justify-content: center;
-                      align-items: center;
-                      flex-direction: column;
-                      color: #12234b;
-                      font-size: 20px;
-                      font-weight: 500;
-                      gap: 10px;
-                    "
-                  >
-                    <i
-                      style="font-size: 30px"
-                      class="fa-solid fa-hand-holding-droplet"
-                    ></i>
-                    <span
-                      >Blood <br />
-                      Donor</span
-                    >
-                  </a>
-                </div>
-              </div>
+                ">
+              <h4 style="font-weight: bold; font-size: 24px">Our Services</h4>
             </div>
 
-            <div>
-              <div
-                style="
+            <div class="row" style="text-align: center">
+              <div class="col-3">
+                <a style="
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
+                      flex-direction: column;
+                      color: #12234b;
+                      font-size: 20px;
+                      font-weight: 500;
+                      gap: 10px;
+                    ">
+                  <i style="font-size: 30px" class="fa-solid fa-truck-medical"></i>
+                  <span>Emergency <br />
+                    Ambulance</span>
+                </a>
+              </div>
+              <div class="col-3">
+                <a style="
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
+                      flex-direction: column;
+                      color: #12234b;
+                      font-size: 20px;
+                      font-weight: 500;
+                      gap: 10px;
+                    ">
+                  <i style="font-size: 30px" class="fa-solid fa-heart-pulse">
+                  </i>
+                  <span>First Responder <br />
+                    Care</span>
+                </a>
+              </div>
+              <div class="col-3">
+                <a style="
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
+                      flex-direction: column;
+                      color: #12234b;
+                      font-size: 20px;
+                      font-weight: 500;
+                      gap: 10px;
+                    ">
+                  <i style="font-size: 30px" class="fa-solid fa-bed-pulse"></i>
+                  <span>Critical Patient <br />
+                    Transport
+                  </span>
+                </a>
+              </div>
+              <div class="col-3">
+                <a style="
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
+                      flex-direction: column;
+                      color: #12234b;
+                      font-size: 20px;
+                      font-weight: 500;
+                      gap: 10px;
+                    ">
+                  <i style="font-size: 30px" class="fa-solid fa-hand-holding-droplet"></i>
+                  <span>Blood <br />
+                    Donor</span>
+                </a>
+              </div>
+            </div>
+          </div> -->
+
+          <div>
+            <div style="
                   display: flex;
                   align-items: center;
                   justify-content: center;
                   margin-bottom: 30px;
                   margin-top: 30px;
-                "
-              >
-                <h4 style="font-weight: bold; font-size: 24px">
-                  Why Choose Use
-                </h4>
-              </div>
+                ">
+              <h4 style="font-weight: bold; font-size: 24px">
+                Why Choose Use
+              </h4>
+            </div>
 
-              <div class="row" style="text-align: center">
-                <div class="col-3">
-                  <a
-                    style="
+            <div class="row" style="text-align: center">
+              <div class="col-3">
+                <a style="
                       display: flex;
                       justify-content: center;
                       align-items: center;
@@ -589,18 +888,14 @@
                       font-size: 20px;
                       font-weight: 500;
                       gap: 10px;
-                    "
-                  >
-                    <i style="font-size: 30px" class="fa-solid fa-clock"></i>
-                    <span
-                      >24/7 <br />
-                      Availability</span
-                    >
-                  </a>
-                </div>
-                <div class="col-3">
-                  <a
-                    style="
+                    ">
+                  <i style="font-size: 30px" class="fa-solid fa-clock"></i>
+                  <span>24/7 <br />
+                    Availability</span>
+                </a>
+              </div>
+              <div class="col-3">
+                <a style="
                       display: flex;
                       justify-content: center;
                       align-items: center;
@@ -609,21 +904,14 @@
                       font-size: 20px;
                       font-weight: 500;
                       gap: 10px;
-                    "
-                  >
-                    <i
-                      style="font-size: 30px"
-                      class="fa-solid fa-house-medical"
-                    ></i>
-                    <span
-                      >Certified <br />
-                      Paramedics</span
-                    >
-                  </a>
-                </div>
-                <div class="col-3">
-                  <a
-                    style="
+                    ">
+                  <i style="font-size: 30px" class="fa-solid fa-house-medical"></i>
+                  <span>Certified <br />
+                    Paramedics</span>
+                </a>
+              </div>
+              <div class="col-3">
+                <a style="
                       display: flex;
                       justify-content: center;
                       align-items: center;
@@ -632,21 +920,15 @@
                       font-size: 20px;
                       font-weight: 500;
                       gap: 10px;
-                    "
-                  >
-                    <i
-                      style="font-size: 30px"
-                      class="fa-solid fa-truck-arrow-right"
-                    ></i>
-                    <span
-                      >Fast <br />
-                      Response
-                    </span>
-                  </a>
-                </div>
-                <div class="col-3">
-                  <a
-                    style="
+                    ">
+                  <i style="font-size: 30px" class="fa-solid fa-truck-arrow-right"></i>
+                  <span>Fast <br />
+                    Response
+                  </span>
+                </a>
+              </div>
+              <div class="col-3">
+                <a style="
                       display: flex;
                       justify-content: center;
                       align-items: center;
@@ -655,233 +937,208 @@
                       font-size: 20px;
                       font-weight: 500;
                       gap: 10px;
-                    "
-                  >
-                    <i
-                      style="font-size: 30px"
-                      class="fa-solid fa-map-location-dot"
-                    ></i>
-                    <span
-                      >Near By <br />
-                      City Coverage</span
-                    >
-                  </a>
-                </div>
+                    ">
+                  <i style="font-size: 30px" class="fa-solid fa-map-location-dot"></i>
+                  <span>Near By <br />
+                    City Coverage</span>
+                </a>
               </div>
             </div>
           </div>
-
-          {% endblock %}
         </div>
+
+        {% endblock %}
       </div>
     </div>
-    <div>
-      <link
-        rel="stylesheet"
-        type="text/css"
-        href="{% static 'css/footer.css'%}"
-      />
-      <footer id="dk-footer" class="dk-footer">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12 col-lg-4">
-              <div class="dk-footer-box-info">
-                <a href="index.html" class="footer-logo">
-                  <img
-                    src="/static/images/logo-without-bg.png"
-                    height="75px"
-                    width="130px"
-                    alt="footer_logo"
-                    class="img-fluid"
-                  />
-                </a>
-                <div class="footer-social-link" style="margin-top: 3em">
-                  <h3>Follow us</h3>
-                  <ul>
-                    <li>
-                      <a href="#">
-                        <i class="fa fa-facebook"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <i class="fa fa-twitter"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <i class="fa fa-google-plus"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <i class="fa fa-linkedin"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <i class="fa fa-instagram"></i>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <!-- End Footer info -->
-            </div>
-            <div class="col-md-12 col-lg-8">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="contact-us">
-                    <div class="contact-icon">
-                      <i class="fa fa-map-o" aria-hidden="true"></i>
-                    </div>
-                    <!-- End contact Icon -->
-                    <div class="contact-info">
-                      <h3>Dhaka, Bangladesh</h3>
-                      <p>A/2 Jahurul Islam Ave</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="contact-us contact-us-last">
-                    <div class="contact-icon">
-                      <i
-                        class="fa fa-volume-control-phone"
-                        aria-hidden="true"
-                      ></i>
-                    </div>
-                    <div class="contact-info">
-                      <h3>+8801792527291</h3>
-                      <p>Give us a call</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-12 col-lg-6">
-                  <div class="footer-widget footer-left-widget">
-                    <div class="section-heading">
-                      <h3>Useful Links</h3>
-                      <span class="animate-border border-black"></span>
-                    </div>
-                    <ul>
-                      {% comment %}
-                      <li>
-                        <a href="{% url 'admin-login' %}">About us</a>
-                      </li>
-                      {% endcomment %}
-                      <li>
-                        <a href="{% url 'home' %}">Services</a>
-                      </li>
-                    </ul>
-                    <ul>
-                      {% comment %}
-                      <li>
-                        <a href="{% url 'admin-login' %}">Our Team</a>
-                      </li>
-                      {% endcomment %}
-                      <li>
-                        <a href="{% url 'contact' %}">Contact</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="col-md-12 col-lg-6">
-                  <div class="footer-widget">
-                    <div class="section-heading">
-                      <h3>Nearby Hospital</h3>
-                      <span class="animate-border border-black"></span>
-                    </div>
-                    <p style="color: white">
-                      A website which will help to find out nearby hospital.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+  </div>
 
-        <div class="copyright">
-          <div class="container">
+
+
+  <!-- footer  -->
+  <div class="mt-5">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/footer.css'%}" />
+    <footer id="dk-footer" class="dk-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-4">
+            <div class="dk-footer-box-info">
+              <a href="index.html" class="footer-logo">
+                <img src="/static/images/logo-without-bg.png" height="75px" width="130px" alt="footer_logo"
+                  class="img-fluid" />
+              </a>
+              <div class="footer-social-link" style="margin-top: 3em">
+                <h3>Follow us</h3>
+                <ul>
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-facebook"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-twitter"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-google-plus"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-linkedin"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-instagram"></i>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!-- End Footer info -->
+          </div>
+          <div class="col-md-12 col-lg-8">
             <div class="row">
               <div class="col-md-6">
-                <span>Copyright © 2025, All Right Reserved</span>
+                <div class="contact-us">
+                  <div class="contact-icon">
+                    <i class="fa fa-map-o" aria-hidden="true"></i>
+                  </div>
+                  <!-- End contact Icon -->
+                  <div class="contact-info">
+                    <h3>Dhaka, Bangladesh</h3>
+                    <p>A/2 Jahurul Islam Ave</p>
+                  </div>
+                </div>
               </div>
-              <!-- End Col -->
               <div class="col-md-6">
-                <div class="copyright-menu">
+                <div class="contact-us contact-us-last">
+                  <div class="contact-icon">
+                    <i class="fa fa-volume-control-phone" aria-hidden="true"></i>
+                  </div>
+                  <div class="contact-info">
+                    <h3>+8801792527291</h3>
+                    <p>Give us a call</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 col-lg-6">
+                <div class="footer-widget footer-left-widget">
+                  <div class="section-heading">
+                    <h3>Useful Links</h3>
+                    <span class="animate-border border-black"></span>
+                  </div>
                   <ul>
+                    {% comment %}
                     <li>
-                      <a href="{% url 'home' %}">Home</a>
+                      <a href="{% url 'admin-login' %}">About us</a>
                     </li>
+                    {% endcomment %}
                     <li>
-                      <a href="{% url 'privacy-policy' %}" target="_blank"
-                        >Privacy Policy</a
-                      >
-                    </li>
-                    <li>
-                      <a href="{% url 'terms-and-conditions' %}"
-                        >Terms & Conditions</a
-                      >
-                    </li>
-                    <li>
-                      <a href="{% url 'contact' %}" target="_blank">Contact</a>
+                      <a href="{% url 'home' %}">Services</a>
                     </li>
                   </ul>
+                  <ul>
+                    {% comment %}
+                    <li>
+                      <a href="{% url 'admin-login' %}">Our Team</a>
+                    </li>
+                    {% endcomment %}
+                    <li>
+                      <a href="{% url 'contact' %}">Contact</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-md-12 col-lg-6">
+                <div class="footer-widget">
+                  <div class="section-heading">
+                    <h3>Nearby Hospital</h3>
+                    <span class="animate-border border-black"></span>
+                  </div>
+                  <p style="color: white">
+                    A website which will help to find out nearby hospital.
+                  </p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <!-- Back to top -->
-        <div id="back-to-top" class="back-to-top">
-          <a href="#top"
-            ><button
-              class="btn btn-dark"
-              title="Back to Top"
-              style="display: block"
-            >
-              <i class="fa fa-angle-up"></i></button
-          ></a>
+      </div>
+
+      <div class="copyright">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <span>Copyright © 2025, All Right Reserved</span>
+            </div>
+            <!-- End Col -->
+            <div class="col-md-6">
+              <div class="copyright-menu">
+                <ul>
+                  <li>
+                    <a href="{% url 'home' %}">Home</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'privacy-policy' %}" target="_blank">Privacy Policy</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'terms-and-conditions' %}">Terms & Conditions</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'contact' %}" target="_blank">Contact</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
-        <!-- End Back to top -->
-      </footer>
-    </div>
+      </div>
+      <!-- Back to top -->
+      <div id="back-to-top" class="back-to-top">
+        <a href="#top"><button class="btn btn-dark" title="Back to Top" style="display: block">
+            <i class="fa fa-angle-up"></i></button></a>
+      </div>
+      <!-- End Back to top -->
+    </footer>
+  </div>
 
-    <!-- Toastify JS -->
-    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-    <script>
-      {% if messages %}
-          {% for message in messages %}
-              Toastify({
-                  text: "{{ message|escapejs }}",
-                  duration: 4000,
-                  gravity: "bottom",          // Bottom of screen
-                  position: "center",         // Center horizontally
-                  backgroundColor:
-                      "{% if message.tags == 'error' %}#f44336{% elif message.tags == 'success' %}#4CAF50{% else %}#333{% endif %}",
-                  close: true
-              }).showToast();
-          {% endfor %}
-      {% endif %}
-    </script>
+  <!-- Toastify JS -->
+  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <!-- <script>
+    {% if messages %}
+    {% for message in messages %}
+    Toastify({
+      text: "{{ message|escapejs }}",
+      duration: 4000,
+      gravity: "bottom",          // Bottom of screen
+      position: "center",         // Center horizontally
+      backgroundColor:
+        "{% if message.tags == 'error' %}#f44336{% elif message.tags == 'success' %}#4CAF50{% else %}#333{% endif %}",
+      close: true
+    }).showToast();
+    {% endfor %}
+    {% endif %}
+  </script> -->
 
-    <!-- Optional JavaScript; choose one of the two! -->
+  <!-- Optional JavaScript; choose one of the two! -->
 
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-      crossorigin="anonymous"
-    ></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
+  <!-- Option 2: Separate Popper and Bootstrap JS -->
+  <!--
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     -->
-  </body>
+</body>
+
 </html>
