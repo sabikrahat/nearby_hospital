@@ -4,9 +4,6 @@
 <!--Css file-->
 <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}"> -->
 
-
-
-
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8" />
@@ -24,13 +21,12 @@
   <!-- Favicon -->
   <link rel="icon" href="{% static 'favicon.ico' %}" />
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
   <!-- Font Awesome -->
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <!-- Title -->
-  <title>{% block title %}Nearby Hospital{% endblock %}</title>
+  <title>{% block title %}Emergency MediCare{% endblock %}</title>
 </head>
-
 
 <style>
   .container-fluid {
@@ -155,17 +151,6 @@
       visibility: visible;
     }
   }
-</style>
-
-
-<style>
-  .hero-section {
-    background: linear-gradient(rgba(0, 123, 255, 0.7), rgba(0, 123, 255, 0.7)), url('/api/placeholder/1200/400');
-    background-size: cover;
-    background-position: center;
-    color: white;
-    padding: 100px 0;
-  }
 
   .feature-card {
     transition: transform 0.3s;
@@ -203,21 +188,37 @@
     border-radius: 50%;
   }
 
-  .bacl_img {
-
-    height: 50%;
+  .back_img {
+    /* height: 50%; */
     width: 100%;
-    /* background-image: url('../static/images/ambulance.jpeg'); */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     max-width: 100%;
     width: 100vw;
-    height: 50vh;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* height: 50vh; */
     min-height: 550px;
   }
-</style>
 
+  .box {
+    margin-bottom: 50px;
+    position: absolute;
+    box-shadow: 0 10px 10px -3px gray;
+    background: white;
+    height: 28%;
+    width: 40%;
+    z-index: 999;
+    top: 86%;
+    left: 30%;
+    color: #000;
+    border-radius: 12px;
+    padding: 25px;
+  }
+</style>
 
 <body>
   <!-- Navbar -->
@@ -226,8 +227,8 @@
       <div class="container-fluid" style="margin-left: 2em; margin-right: 2em">
         <a class="navbar-brand" href="{% url 'home' %}">
           <img src="{% static 'images/logo.jpg' %}" height="35px" width="45px" class="d-inline-block align-top"
-            alt="Nearby Hospital image" />
-          <b>&ensp;Nearby Hospital</b>
+            alt="MediConnect image" />
+          <b>&ensp;Emergency MediCare</b>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -359,50 +360,45 @@
   <!-- Main Part -->
   <div class="">
     <div class="">
-      <div class="">
-        {% block content %}
+      <div class="">{%if hideBanner %}
+        <div></div>
+        {% else %}
         <section class="hero-section text-center">
           <div style="position: relative; height: 50%; width: 100%">
-            <div class="back_img">
+            <div class="back_img" style="
+                  background-image: url('../../../../static/images/breatcome.jpg');
+                ">
               <div class="container">
-                <h1 class="display-4 fw-bold mb-4">Your Health, Our Priority</h1>
-                <p class="lead mb-5">Find the right hospital, book appointments with qualified doctors, and access
-                  emergency services
-                  - all in one place.</p>
+                <h1 class="display-4 fw-bold mb-4">
+                  Your Health, Our Priority
+                </h1>
+                <p class="lead mb-5">
+                  Find the right hospital, book appointments with qualified
+                  doctors, and access emergency services - all in one place.
+                </p>
+                {%if showSearch %}
                 <div class="row justify-content-center">
                   <div class="col-md-8">
                     <div class="input-group mb-3">
                       <input type="text" class="form-control form-control-lg"
-                        placeholder="Search for hospitals or doctors...">
+                        placeholder="Search for hospitals or doctors..." />
                       <button class="btn btn-light" type="button">
                         <i class="fas fa-search"></i> Search
                       </button>
                     </div>
                   </div>
                 </div>
+                {% endif %}
               </div>
             </div>
 
-            <div class="box" style="
-                margin-bottom: 50px;
-                position: absolute;
-                box-shadow: 0 10px 10px -3px gray;
-                background: white;
-                height: 65%;
-                width: 40%;
-                z-index: 999;
-                top: 110%;
-                left: 30%;
-                color: #000;
-                border-radius: 12px;
-                padding: 25px;
-              ">
+            <div class="box">
               <div class="row">
                 <div class="col-7" style="
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                  ">
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                    ">
                   <div>
                     <h3 style="font-weight: 700">
                       24/7 Emergency Medical <br />
@@ -416,13 +412,13 @@
                 <div class="col-5" style="display: flex; align-items: center">
                   <div style="flex: 1">
                     <button style="
-                        background: rgb(226, 78, 51);
-                        color: #fff;
-                        padding: 16px;
-                        width: 98%;
-                        border: none;
-                        border-radius: 6px;
-                      ">
+                          background: rgb(226, 78, 51);
+                          color: #fff;
+                          padding: 16px;
+                          width: 98%;
+                          border: none;
+                          border-radius: 6px;
+                        ">
                       Call Now
                     </button>
                   </div>
@@ -431,7 +427,9 @@
             </div>
           </div>
         </section>
+        {% endif %}
 
+        {% block content %}
 
         <!-- Main Features Section -->
         <section class="my-5 pt-4">
@@ -446,7 +444,10 @@
                       <i class="fas fa-hospital text-warning fa-3x"></i>
                     </div>
                     <h5 class="card-title">Find Hospitals</h5>
-                    <p class="card-text">Search and discover top-rated hospitals near your location.</p>
+                    <p class="card-text">
+                      Search and discover top-rated hospitals near your
+                      location.
+                    </p>
                     <a href="#" class="btn btn-outline-primary mt-3">Find Now</a>
                   </div>
                 </div>
@@ -460,7 +461,9 @@
                       <i class="fas fa-user-md text-success fa-3x"></i>
                     </div>
                     <h5 class="card-title">Doctor Appointments</h5>
-                    <p class="card-text">Book appointments with specialists of your choice.</p>
+                    <p class="card-text">
+                      Book appointments with specialists of your choice.
+                    </p>
                     <a href="#" class="btn btn-outline-primary mt-3">Book Now</a>
                   </div>
                 </div>
@@ -474,7 +477,9 @@
                       <i class="fas fa-ambulance text-danger fa-3x"></i>
                     </div>
                     <h5 class="card-title">Emergency Services</h5>
-                    <p class="card-text">Quick access to emergency ambulance services.</p>
+                    <p class="card-text">
+                      Quick access to emergency ambulance services.
+                    </p>
                     <a href="#" class="btn btn-outline-danger mt-3">Call Now</a>
                   </div>
                 </div>
@@ -488,7 +493,9 @@
                       <i class="fas fa-map-marker-alt text-primary fa-3x"></i>
                     </div>
                     <h5 class="card-title">Nearby Facilities</h5>
-                    <p class="card-text">Find healthcare facilities closest to your location.</p>
+                    <p class="card-text">
+                      Find healthcare facilities closest to your location.
+                    </p>
                     <a href="#" class="btn btn-outline-primary mt-3">Check Map</a>
                   </div>
                 </div>
@@ -500,8 +507,14 @@
         <!-- Emergency Section -->
         <section class="emergency-section">
           <div class="container text-center">
-            <h3><i class="fas fa-exclamation-triangle me-2"></i> Emergency? Need an ambulance?</h3>
-            <p class="lead mb-4">Our emergency service is available 24/7. Call now for immediate assistance.</p>
+            <h3>
+              <i class="fas fa-exclamation-triangle me-2"></i> Emergency? Need
+              an ambulance?
+            </h3>
+            <p class="lead mb-4">
+              Our emergency service is available 24/7. Call now for immediate
+              assistance.
+            </p>
             <a href="#" class="btn btn-light btn-lg">
               <i class="fas fa-phone-alt me-2"></i> 911 - Emergency Hotline
             </a>
@@ -513,117 +526,36 @@
           <div class="container">
             <h2 class="text-center mb-5">Nearby Hospitals</h2>
             <div class="row">
-              <!-- Hospital 1 -->
-              <div class="col-md-6 mb-4">
+              {% for hsptl in hospitals %}
+              <div class="col-md-4 mb-4">
                 <div class="card shadow-sm">
                   <div class="row g-0">
-
                     <div class="col-md-12">
                       <div class="card-body">
-                        <h5 class="card-title">City General Hospital</h5>
+                        <h5 class="card-title">{{hsptl.name}}</h5>
                         <div class="mb-2">
                           <span class="badge bg-success">Open 24/7</span>
-                          <span class="ms-2">⭐⭐⭐⭐ (4.2)</span>
                         </div>
                         <p class="card-text">
-                          <i class="fas fa-map-marker-alt text-danger"></i> 123 Main Street, City Center
+                          <i class="fas fa-map-marker-alt text-danger"></i>
+                          {{hsptl.location}}
                         </p>
                         <p class="card-text">
-                          <i class="fas fa-walking text-primary"></i> 2.5 km away
+                          <i class="fas fa-walking text-primary"></i> 2.5 km
+                          away
                         </p>
                         <div class="d-flex justify-content-between">
-                          <a href="#" class="btn btn-outline-primary btn-sm">View Details</a>
-                          <a href="#" class="btn btn-primary btn-sm">Book Appointment</a>
+                          <a href="{% url 'doctors_page' hsptl.id %}" class="btn btn-outline-primary btn-sm">View
+                            Details</a>
+                          <a href="{% url 'doctors_page' hsptl.id %}" class="btn btn-primary btn-sm">Book
+                            Appointment</a>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-
-              <!-- Hospital 2 -->
-              <div class="col-md-6 mb-4">
-                <div class="card shadow-sm">
-                  <div class="row g-0">
-
-                    <div class="col-md-12">
-                      <div class="card-body">
-                        <h5 class="card-title">Memorial Medical Center</h5>
-                        <div class="mb-2">
-                          <span class="badge bg-success">Open 24/7</span>
-                          <span class="ms-2">⭐⭐⭐⭐⭐ (4.8)</span>
-                        </div>
-                        <p class="card-text">
-                          <i class="fas fa-map-marker-alt text-danger"></i> 456 Park Avenue, Westside
-                        </p>
-                        <p class="card-text">
-                          <i class="fas fa-walking text-primary"></i> 3.8 km away
-                        </p>
-                        <div class="d-flex justify-content-between">
-                          <a href="#" class="btn btn-outline-primary btn-sm">View Details</a>
-                          <a href="#" class="btn btn-primary btn-sm">Book Appointment</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Hospital 3 -->
-              <div class="col-md-6 mb-4">
-                <div class="card shadow-sm">
-                  <div class="row g-0">
-
-                    <div class="col-md-12">
-                      <div class="card-body">
-                        <h5 class="card-title">Children's Medical Center</h5>
-                        <div class="mb-2">
-                          <span class="badge bg-success">Open 24/7</span>
-                          <span class="ms-2">⭐⭐⭐⭐⭐ (4.9)</span>
-                        </div>
-                        <p class="card-text">
-                          <i class="fas fa-map-marker-alt text-danger"></i> 789 Children's Way, Eastside
-                        </p>
-                        <p class="card-text">
-                          <i class="fas fa-walking text-primary"></i> 5.1 km away
-                        </p>
-                        <div class="d-flex justify-content-between">
-                          <a href="#" class="btn btn-outline-primary btn-sm">View Details</a>
-                          <a href="#" class="btn btn-primary btn-sm">Book Appointment</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Hospital 4 -->
-              <div class="col-md-6 mb-4">
-                <div class="card shadow-sm">
-                  <div class="row g-0">
-
-                    <div class="col-md-12">
-                      <div class="card-body">
-                        <h5 class="card-title">University Health System</h5>
-                        <div class="mb-2">
-                          <span class="badge bg-success">Open 24/7</span>
-                          <span class="ms-2">⭐⭐⭐⭐ (4.6)</span>
-                        </div>
-                        <p class="card-text">
-                          <i class="fas fa-map-marker-alt text-danger"></i> 101 University Blvd, Downtown
-                        </p>
-                        <p class="card-text">
-                          <i class="fas fa-walking text-primary"></i> 4.3 km away
-                        </p>
-                        <div class="d-flex justify-content-between">
-                          <a href="#" class="btn btn-outline-primary btn-sm">View Details</a>
-                          <a href="#" class="btn btn-primary btn-sm">Book Appointment</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              {% endfor %}
             </div>
             <div class="text-center mt-4">
               <a href="#" class="btn btn-primary">View All Hospitals</a>
@@ -637,76 +569,25 @@
             <h2 class="text-center mb-5">Top Doctors</h2>
             <div class="row">
               <!-- Doctor 1 -->
+              {% for dctr in doctors %}
               <div class="col-md-3 mb-4">
                 <div class="card text-center shadow-sm">
                   <div class="card-body">
-                    <img src="/api/placeholder/100/100" class="mb-3" alt="Dr. Sarah Johnson">
-                    <h5 class="card-title">Dr. Sarah Johnson</h5>
-                    <p class="card-text text-muted">Cardiologist</p>
+                    <img src="{% static 'images/doctor.jpg' %}" class="mb-3" alt="{{dctr.name}}"
+                      style="width: 45px; height: 45px" />
+                    <h5 class="card-title">{{dctr.name}}</h5>
+                    <p class="card-text text-muted">{{dctr.department}}</p>
                     <div class="mb-2">
-                      <small class="text-warning">⭐⭐⭐⭐⭐ (4.9)</small>
+                      <small class="text-warning">⭐⭐⭐⭐⭐ ({{dctr.rating}})</small>
                     </div>
                     <p class="card-text">
-                      <small>City General Hospital</small>
+                      <small>{{dctr.hospital.name}}</small>
                     </p>
-                    <a href="#" class="btn btn-outline-primary btn-sm">View Profile</a>
+                    <a href="{{dctr.link}}" target="blank" class="btn btn-outline-primary btn-sm">Book Appointment</a>
                   </div>
                 </div>
               </div>
-
-              <!-- Doctor 2 -->
-              <div class="col-md-3 mb-4">
-                <div class="card text-center shadow-sm">
-                  <div class="card-body">
-                    <img src="/api/placeholder/100/100" class="mb-3" alt="Dr. Michael Chen">
-                    <h5 class="card-title">Dr. Michael Chen</h5>
-                    <p class="card-text text-muted">Neurologist</p>
-                    <div class="mb-2">
-                      <small class="text-warning">⭐⭐⭐⭐⭐ (4.8)</small>
-                    </div>
-                    <p class="card-text">
-                      <small>Memorial Medical Center</small>
-                    </p>
-                    <a href="#" class="btn btn-outline-primary btn-sm">View Profile</a>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Doctor 3 -->
-              <div class="col-md-3 mb-4">
-                <div class="card text-center shadow-sm">
-                  <div class="card-body">
-                    <img src="/api/placeholder/100/100" class="mb-3" alt="Dr. Emily Rodriguez">
-                    <h5 class="card-title">Dr. Emily Rodriguez</h5>
-                    <p class="card-text text-muted">Pediatrician</p>
-                    <div class="mb-2">
-                      <small class="text-warning">⭐⭐⭐⭐⭐ (4.9)</small>
-                    </div>
-                    <p class="card-text">
-                      <small>Children's Medical Center</small>
-                    </p>
-                    <a href="#" class="btn btn-outline-primary btn-sm">View Profile</a>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Doctor 4 -->
-              <div class="col-md-3 mb-4">
-                <div class="card text-center shadow-sm">
-                  <div class="card-body">
-                    <img src="/api/placeholder/100/100" class="mb-3" alt="Dr. James Wilson">
-                    <h5 class="card-title">Dr. James Wilson</h5>
-                    <p class="card-text text-muted">Orthopedic Surgeon</p>
-                    <div class="mb-2">
-                      <small class="text-warning">⭐⭐⭐⭐ (4.7)</small>
-                    </div>
-                    <p class="card-text">
-                      <small>University Health System</small>
-                    </p>
-                    <a href="#" class="btn btn-outline-primary btn-sm">View Profile</a>
-                  </div>
-                </div>
-              </div>
+              {% endfor %}
             </div>
             <div class="text-center mt-4">
               <a href="#" class="btn btn-primary">View All Doctors</a>
@@ -719,151 +600,29 @@
           <div class="container">
             <h2 class="text-center mb-5">What Our Users Say</h2>
             <div class="row">
+              {% for cntct in contacts %}
               <div class="col-md-4 mb-4">
                 <div class="card shadow-sm h-100">
                   <div class="card-body">
-                    <div class="mb-3 text-warning">
-                      ⭐⭐⭐⭐⭐
-                    </div>
-                    <p class="card-text">"I found a great specialist for my condition and booked an appointment in
-                      minutes. The
-                      platform is so intuitive and saved me so much time!"</p>
+                    <div class="mb-3 text-warning">⭐⭐⭐⭐⭐</div>
+                    <p class="card-text">{{cntct.message}}</p>
                     <div class="d-flex align-items-center mt-3">
-                      <img src="/api/placeholder/50/50" class="rounded-circle me-3" alt="User">
+                      <img src="{% static 'images/default_dp.gif' %}" class="rounded-circle me-3" alt="User"
+                        style="width: 50px; height: 50px" />
                       <div>
-                        <h6 class="mb-0">Jennifer Adams</h6>
-                        <small class="text-muted">Patient</small>
+                        <h6 class="mb-0">{{cntct.messengerName}}</h6>
+                        <small class="text-muted">{{cntct.messengerEmail}}</small>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-
-              <div class="col-md-4 mb-4">
-                <div class="card shadow-sm h-100">
-                  <div class="card-body">
-                    <div class="mb-3 text-warning">
-                      ⭐⭐⭐⭐⭐
-                    </div>
-                    <p class="card-text">"When my son had an accident, the emergency service feature helped us get an
-                      ambulance
-                      quickly. This platform is literally a lifesaver!"</p>
-                    <div class="d-flex align-items-center mt-3">
-                      <img src="/api/placeholder/50/50" class="rounded-circle me-3" alt="User">
-                      <div>
-                        <h6 class="mb-0">Robert Taylor</h6>
-                        <small class="text-muted">Parent</small>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-4 mb-4">
-                <div class="card shadow-sm h-100">
-                  <div class="card-body">
-                    <div class="mb-3 text-warning">
-                      ⭐⭐⭐⭐
-                    </div>
-                    <p class="card-text">"As someone new to the city, finding nearby hospitals and comparing their
-                      services was
-                      incredibly helpful. I highly recommend this platform."</p>
-                    <div class="d-flex align-items-center mt-3">
-                      <img src="/api/placeholder/50/50" class="rounded-circle me-3" alt="User">
-                      <div>
-                        <h6 class="mb-0">Maria Garcia</h6>
-                        <small class="text-muted">New Resident</small>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              {% endfor %}
             </div>
           </div>
         </section>
 
-
         <div class="container">
-          <!-- <div>
-            <div style="
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  margin-bottom: 30px;
-                ">
-              <h4 style="font-weight: bold; font-size: 24px">Our Services</h4>
-            </div>
-
-            <div class="row" style="text-align: center">
-              <div class="col-3">
-                <a style="
-                      display: flex;
-                      justify-content: center;
-                      align-items: center;
-                      flex-direction: column;
-                      color: #12234b;
-                      font-size: 20px;
-                      font-weight: 500;
-                      gap: 10px;
-                    ">
-                  <i style="font-size: 30px" class="fa-solid fa-truck-medical"></i>
-                  <span>Emergency <br />
-                    Ambulance</span>
-                </a>
-              </div>
-              <div class="col-3">
-                <a style="
-                      display: flex;
-                      justify-content: center;
-                      align-items: center;
-                      flex-direction: column;
-                      color: #12234b;
-                      font-size: 20px;
-                      font-weight: 500;
-                      gap: 10px;
-                    ">
-                  <i style="font-size: 30px" class="fa-solid fa-heart-pulse">
-                  </i>
-                  <span>First Responder <br />
-                    Care</span>
-                </a>
-              </div>
-              <div class="col-3">
-                <a style="
-                      display: flex;
-                      justify-content: center;
-                      align-items: center;
-                      flex-direction: column;
-                      color: #12234b;
-                      font-size: 20px;
-                      font-weight: 500;
-                      gap: 10px;
-                    ">
-                  <i style="font-size: 30px" class="fa-solid fa-bed-pulse"></i>
-                  <span>Critical Patient <br />
-                    Transport
-                  </span>
-                </a>
-              </div>
-              <div class="col-3">
-                <a style="
-                      display: flex;
-                      justify-content: center;
-                      align-items: center;
-                      flex-direction: column;
-                      color: #12234b;
-                      font-size: 20px;
-                      font-weight: 500;
-                      gap: 10px;
-                    ">
-                  <i style="font-size: 30px" class="fa-solid fa-hand-holding-droplet"></i>
-                  <span>Blood <br />
-                    Donor</span>
-                </a>
-              </div>
-            </div>
-          </div> -->
-
           <div>
             <div style="
                   display: flex;
@@ -951,8 +710,6 @@
       </div>
     </div>
   </div>
-
-
 
   <!-- footer  -->
   <div class="mt-5">
@@ -1057,7 +814,7 @@
               <div class="col-md-12 col-lg-6">
                 <div class="footer-widget">
                   <div class="section-heading">
-                    <h3>Nearby Hospital</h3>
+                    <h3>Emergency MediCare</h3>
                     <span class="animate-border border-black"></span>
                   </div>
                   <p style="color: white">

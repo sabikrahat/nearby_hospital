@@ -1,8 +1,6 @@
- @import url(https://fonts.googleapis.com/css?family=Dancing+Script:400,700); s
-* {
-  box-sizing: border-box;
-}
-body {
+@import url(https://fonts.googleapis.com/css?family=Dancing+Script:400,700);
+
+.contacts {
   margin: 0;
   padding: 0;
   background-color: #bbdefb;

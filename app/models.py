@@ -21,7 +21,7 @@ class UserContact(models.Model):
     class Meta:
         db_table = 'app_users_contacts'
 
-class hospitalModel(models.Model):
+class HospitalModel(models.Model):
     name = models.CharField(max_length=50)
     location = models.CharField(max_length=100)
     latitude = models.FloatField()
@@ -35,37 +35,33 @@ class hospitalModel(models.Model):
     class Meta:
         db_table = 'app_hospitals'
 
-class doctorModel(models.Model):
+class DoctorModel(models.Model):
     name = models.CharField(max_length=50)
     degrees = models.CharField(max_length=255)
     department = models.CharField(max_length=255)
-    hospital = models.ForeignKey(hospitalModel, on_delete=models.CASCADE)
+    hospital = models.ForeignKey(HospitalModel, on_delete=models.CASCADE)
     phone = models.CharField(max_length=15)
-    isSaturday = models.BooleanField(default=False)
-    isSunday = models.BooleanField(default=False)
-    isMonday = models.BooleanField(default=False)
-    isTuesday = models.BooleanField(default=False)
-    isWednesday = models.BooleanField(default=False)
-    isThursday = models.BooleanField(default=False)
-    isFriday = models.BooleanField(default=False)
+    availableDays = models.CharField(max_length=255)
     apointmentTime = models.CharField(max_length=100)
     availableTime = models.CharField(max_length=100)
     fees = models.CharField(max_length=50)
     rating = models.CharField(max_length=20)
+    link = models.CharField(max_length=255, default="https://www.google.com/")
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         db_table = 'app_doctors'
 
-class ambulanceModel(models.Model):
+class AmbulanceModel(models.Model):
     name = models.CharField(max_length=50)
-    hospital = models.ForeignKey(hospitalModel, on_delete=models.CASCADE)
+    hospital = models.ForeignKey(HospitalModel, on_delete=models.CASCADE)
     location = models.CharField(max_length=100)
     latitude = models.FloatField()
     longitude = models.FloatField()
     phone = models.CharField(max_length=15)
     services = models.CharField(max_length=255)
     fees = models.CharField(max_length=50)
+    link = models.CharField(max_length=255, default="https://www.google.com/")
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
